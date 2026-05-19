@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gyusang — AI/ML Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --text: #2c2c2c;
+      --text-light: #6b6b6b;
+      --accent: #1a3a5c;
+      --accent-light: #e8eef4;
+      --border: #e0ddd8;
+      --card-bg: #ffffff;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Source Sans 3', 'Noto Sans KR', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -1px;
+    }
+
+    .header-text h1 {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .header-text .title {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .header-text .bio {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      padding-bottom: 1px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .links a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .links a::before {
+      content: attr(data-icon);
+      margin-right: 5px;
+    }
+
+    /* Sections */
+    section {
+      padding: 50px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    section h2 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 30px;
+      letter-spacing: -0.3px;
+    }
+
+    /* Research Interests */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .interest-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .interest-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .interest-card h3 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .interest-card p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Publications */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pub-item {
+      padding: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .pub-item:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .pub-authors {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .pub-venue {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+
+    .pub-links {
+      margin-top: 10px;
+      display: flex;
+      gap: 14px;
+    }
+
+    .pub-links a {
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed var(--accent);
+      transition: opacity 0.2s;
+    }
+
+    .pub-links a:hover {
+      opacity: 0.7;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header { padding: 50px 0 40px; }
+
+      .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+      }
+
+      .avatar { width: 110px; height: 110px; font-size: 38px; }
+      .header-text h1 { font-size: 32px; }
+      .header-text .bio { max-width: 100%; }
+      .links { justify-content: center; }
+      .interests-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0s; }
+    .fade-in:nth-child(2) { animation-delay: 0.1s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+    .fade-in:nth-child(4) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="fade-in">
+      <div class="header-content">
+        <div class="avatar">G</div>
+        <div class="header-text">
+          <h1>Gyusang Cho</h1>
+          <div class="title">Postdoctoral Researcher · AI/ML</div>
+          <p class="bio">
+            I am a postdoctoral researcher working on reasoning in diffusion language models 
+            and safety in vision-language models. My research aims to understand and improve 
+            the generative capabilities of diffusion-based architectures for language, 
+            and to develop robust safety mechanisms for multimodal AI systems.
+          </p>
+          <div class="links">
+            <a href="mailto:your@email.com" data-icon="✉">Email</a>
+            <a href="https://scholar.google.com/" data-icon="📄" target="_blank">Google Scholar</a>
+            <a href="https://github.com/GYYYYYUUUUU" data-icon="⌨" target="_blank">GitHub</a>
+            <!-- <a href="/cv.pdf" data-icon="📋">CV</a> -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- RESEARCH INTERESTS -->
+    <section>
+      <h2 class="fade-in">Research Interests</h2>
+      <div class="interests-grid">
+        <div class="interest-card fade-in">
+          <h3>Diffusion Language Models</h3>
+          <p>Enabling reasoning capabilities in diffusion-based language models, 
+             including distillation of AR reasoning traces and investigating 
+             semantic superposition in continuous token spaces.</p>
+        </div>
+        <div class="interest-card fade-in">
+          <h3>VLM Safety</h3>
+          <p>Concept erasure in text-to-image diffusion models, safety classification 
+             for generated content, and understanding differential erasure difficulty 
+             across concept types.</p>
+        </div>
+        <div class="interest-card fade-in">
+          <h3>Generative Models</h3>
+          <p>Diffusion processes, masked diffusion, flow matching, and their 
+             mathematical foundations for both language and vision domains.</p>
+        </div>
+        <div class="interest-card fade-in">
+          <h3>AI Alignment</h3>
+          <p>RL-based fine-tuning for diffusion models, and developing evaluation 
+             frameworks for safety and robustness in multimodal systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section>
+      <h2 class="fade-in">Publications</h2>
+      <div class="pub-list">
+
+        <div class="pub-item fade-in">
+          <div class="pub-title">Paper Title Here</div>
+          <div class="pub-authors"><strong>Gyusang Cho</strong>, Co-Author Name, Co-Author Name</div>
+          <div class="pub-venue">Conference / Journal Name, 2025</div>
+          <div class="pub-links">
+            <a href="#">Paper</a>
+            <a href="#">Code</a>
+          </div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <div class="pub-title">Another Paper Title Here</div>
+          <div class="pub-authors">Co-Author Name, <strong>Gyusang Cho</strong>, Co-Author Name</div>
+          <div class="pub-venue">Conference / Journal Name, 2024</div>
+          <div class="pub-links">
+            <a href="#">Paper</a>
+          </div>
+        </div>
+
+        <!-- Add more publications as needed -->
+
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Gyusang Cho
+    </footer>
+
+  </div>
+
+</body>
+</html>
