@@ -1,0 +1,10 @@
+title: Gyusang Cho
+description: Notes.
+url: "https://gyyyyyuuuuu.github.io"
+
+author:
+  name: Gyusang Cho
+
+permalink: /notes/:title/
+
+markdown: kramdown
