@@ -352,34 +352,42 @@
       </div>
     </section>
 
-        <!-- NOTES -->
-    <section>
-      <h2 class="fade-in">Notes</h2>
-      <div class="pub-list">
+  <!-- NOTES -->
+  <section>
+    <h2 class="fade-in">Notes</h2>
 
-        <div class="pub-item fade-in">
-          <div class="pub-title">Note</div>
-          <div class="pub-authors"><strong>Gyusang Cho</strong>, Co-Author Name, Co-Author Name</div>
-          <div class="pub-venue">Conference / Journal Name, 2025</div>
-          <div class="pub-links">
-            <a href="#">Paper</a>
-            <a href="#">Code</a>
-          </div>
+    <div class="pub-list">
+      {% for post in site.posts limit:3 %}
+
+      <div class="pub-item fade-in">
+        <div class="pub-title">
+          {{ post.title }}
         </div>
 
-        <div class="pub-item fade-in">
-          <div class="pub-title">Another Note Title Here</div>
-          <div class="pub-authors">Co-Author Name, <strong>Gyusang Cho</strong>, Co-Author Name</div>
-          <div class="pub-venue">Conference / Journal Name, 2024</div>
-          <div class="pub-links">
-            <a href="#">Paper</a>
-          </div>
+        <div class="pub-venue">
+          {{ post.date | date: "%B %-d, %Y" }}
         </div>
 
-        <!-- Add more publications as needed -->
+        {% if post.description %}
+        <div class="pub-authors">
+          {{ post.description }}
+        </div>
+        {% endif %}
 
+        <div class="pub-links">
+          <a href="{{ post.url }}">Read</a>
+        </div>
       </div>
-    </section>
+
+      {% endfor %}
+    </div>
+
+    <div style="margin-top: 20px;">
+      <a href="/notes/" style="color: var(--accent); text-decoration: none;">
+        View all notes →
+      </a>
+    </div>
+  </section>
 
     <footer>
       © 2026 Gyusang Cho
