@@ -1,0 +1,41 @@
+---
+layout: default
+title: Notes
+---
+
+<div class="notes-container">
+
+  <a class="back-link" href="/">← Home</a>
+
+  <header class="notes-header">
+    <h1>Notes</h1>
+    <p>Essays and notes on AI, research, and technology.</p>
+  </header>
+
+  <div class="notes-list">
+
+    {% for post in site.posts %}
+
+    <article class="note-item">
+
+      <h2>
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+
+      <div class="note-date">
+        {{ post.date | date: "%B %-d, %Y" }}
+      </div>
+
+      {% if post.description %}
+      <p>{{ post.description }}</p>
+      {% endif %}
+
+    </article>
+
+    {% endfor %}
+
+  </div>
+
+</div>
